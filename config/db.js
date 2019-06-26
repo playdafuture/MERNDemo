@@ -8,7 +8,10 @@ const connectDB = async () => {
       'Attempting to connect to MongoDB with the following credentials...'
     );
     console.log(db);
-    await mongoose.connect(db, { useNewUrlParser: true });
+    await mongoose.connect(db, {
+      useNewUrlParser: true,
+      userCreateIndex: true
+    });
     console.log('MongoDB Connected!');
   } catch (err) {
     console.error(err.message);
