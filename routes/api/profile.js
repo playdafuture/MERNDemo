@@ -60,21 +60,17 @@ router.post(
     profileFields.user = req.user.id;
 
     if (location) {
-      console.log('new location');
       profileFields.location = location;
     }
     if (skills) {
       // assumes skills comes in array format. in case of CSV format, use split with trim
-      console.log('new skills');
       profileFields.skills = skills; //.split(',').map(skill => skill.trim());
     }
     if (bio) {
-      console.log('new bio');
       profileFields.bio = bio;
     }
 
     try {
-      console.log(profileFields);
       let profile = await Profile.findOne({ user: req.user.id });
       if (profile) {
         //update
@@ -98,5 +94,60 @@ router.post(
     res.send(profileFields);
   }
 );
+
+/**
+ * @route   GET api/profile/search
+ * @desc    search all other profiles based on the parameters passed
+ * @access  Public
+ */
+router.get('/search', async (req, res) => {
+  try {
+    const { user_id, skills, location } = req.body;
+    if (!user_id && !skills && !location) {
+      //console.log('no params, get EVERYONE');
+      const profiles = await Profile.find().populate('user', [
+        'name',
+        'avatar'
+      ]);
+      res.json(profiles);
+    } else if (user_id) {
+      //console.log('get user by id');
+      const profile = await Profile.findOne({ user: user_id }).populate(
+        'user',
+        ['name', 'avatar']
+      );
+      if (!profile) {
+        return res.status(404).json({ msg: 'Could not find such user' });
+      } else {
+        return res.json(profile);
+      }
+    } else {
+      if (!skills) {
+        //console.log('use location to search')
+        const profiles = await Profile.find({ location: location }).populate(
+          'user',
+          ['name', 'avatar']
+        );
+        res.json(profiles);
+      } else if (!location) {
+        //console.log('use skills to search')
+        const profiles = await Profile.find({
+          skills: { $all: skills }
+        }).populate('user', ['name', 'avatar']);
+        res.json(profiles);
+      } else {
+        //console.log('use both skills & location to search')
+        const profiles = await Profile.find({
+          location: location,
+          skills: { $all: skills }
+        }).populate('user', ['name', 'avatar']);
+        res.json(profiles);
+      }
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
