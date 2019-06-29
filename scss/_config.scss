@@ -1,0 +1,24 @@
+$primary-color: rgb(1, 26, 110);
+$dark-color: rgb(0, 0, 28);
+$light-color: rgb(9, 152, 220);
+$white-color: rgb(254, 255, 250);
+$purple-color: rgb(161, 33, 255);
+$danger-color: rgb(194, 73, 26);
+$warning-color: rgb(245, 238, 43);
+$success-color: rgb(156, 216, 40);
+
+$max-width: 1100px;
+
+// Set text color based on background
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return $dark-color;
+  } @else {
+    @return $light-color;
+  }
+}
+// Set background & text color
+@mixin set-background($color) {
+  background-color: $color;
+  color: $white-color;
+}

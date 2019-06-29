@@ -40,9 +40,6 @@ router.post(
     auth
     // , //enforce certain fields
     // [
-    //   check('status', 'Status is required')
-    //     .not()
-    //     .isEmpty(),
     //   check('skills', 'Skills is required')
     //     .not()
     //     .isEmpty()
@@ -81,9 +78,17 @@ router.post(
         );
         //res.send(profileFields);
       } else {
-        //create
-        profile = new Profile(profileFields);
-        await profile.save();
+        //safety check for deleted user
+        let u = await User.findOne({ user: req.user.id });
+        if (!u) {
+          return res
+            .status(401)
+            .json({ msg: 'Unable to update profile for non-existing user' });
+        } else {
+          //create
+          profile = new Profile(profileFields);
+          await profile.save();
+        }
         //res.send(profileFields);
       }
       return res.json(profile);
@@ -144,6 +149,25 @@ router.get('/search', async (req, res) => {
         res.json(profiles);
       }
     }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+/**
+ * @route   DELETE api/profile
+ * @desc    Delete current user's profile
+ * @access  Private
+ */
+router.delete('/', auth, async (req, res) => {
+  try {
+    //todo: remove posts
+    // Remove profile
+    await Profile.findOneAndRemove({ user: req.user.id });
+    // Remove user
+    await User.findOneAndRemove({ _id: req.user.id });
+    res.json({ msg: 'User deleted' });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
