@@ -22,3 +22,25 @@ $max-width: 1100px;
   background-color: $color;
   color: $white-color;
 }
+
+// Margin & Padding
+$spaceamounts: (1, 2, 3, 4, 5);
+
+@each $spaceamount in $spaceamounts {
+  // all around margin
+  .m-#{$spaceamount} {
+    margin: #{$spaceamount}rem;
+  }
+  // vertical margin
+  .my-#{$spaceamount} {
+    margin: #{$spaceamount}rem 0;
+  }
+  // all around padding
+  .p-#{$spaceamount} {
+    padding: #{$spaceamount}rem;
+  }
+  // vertical padding
+  .py-#{$spaceamount} {
+    padding: #{$spaceamount}rem 0;
+  }
+}

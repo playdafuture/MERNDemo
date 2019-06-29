@@ -27,35 +27,22 @@
       </ul>
     </nav>
     <section class="container">
-      <h1 class="large text-primary">Sign up</h1>
-      <p class="lead"><i class="fas fa-user">Create your account</i></p>
+      <!-- Alert -->
+      <div class="alert alert-danger">Invalid Credentials</div>
+      <h1 class="large text-primary">Sign in</h1>
+      <p class="lead"><i class="fas fa-user">Sign in your account</i></p>
       <form action="dashboard.html" class="form">
         <div class="form-group">
-          <input type="text" placeholder="Name" />
-          <small class="form-text"
-            >Your full name (you can change this later)</small
-          >
-        </div>
-        <div class="form-group">
           <input type="email" placeholder="Email Address" />
-          <small class="form-text"
-            >This site uses Gravatar, use your Gravatar email if you wish to
-            link your avatar</small
-          >
         </div>
         <div class="form-group">
           <input type="password" placeholder="Password" />
-          <small class="form-text">6 or more characters</small>
         </div>
-        <div class="form-group">
-          <input type="password" placeholder="Confirm Password" minlength="6" />
-          <small class="form-text">Enter your password again</small>
-        </div>
-        <input type="submit" value="Register" class="btn btn-primary" />
+        <input type="submit" value="Log in" class="btn btn-primary" />
       </form>
       <div class="p my-1 text-white">
-        Already have an account?
-        <a href="login.html" class="btn btn-small btn-light">Login</a>
+        Don't have an account yet?
+        <a href="register.html" class="btn btn-small btn-light">Register</a>
       </div>
     </section>
   </body>
