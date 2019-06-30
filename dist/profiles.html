@@ -29,8 +29,34 @@
     <section class="container">
       <h1 class="large text primary">Profiles</h1>
       <p class="lead">
-        <i class="fas fa-sliders-h"></i>Search and Browse profiles
+        <i class="fas fa-sliders-h" style="padding-right: 1rem"></i>Search and
+        Browse profiles
       </p>
+
+      <form action="" style="margin-bottom: 1rem">
+        <div class="combo-search-bar" style="background: rgba(5,5,5,0.5)">
+          <div class="combo-search-bar combo-search-bar-first">
+            <input
+              class="combo-search-bar combo-search-bar-first-input"
+              id="search"
+              type="text"
+              placeholder="What skills are you looking for?"
+            />
+          </div>
+          <div class="combo-search-bar combo-search-bar-second">
+            <input
+              class="combo-search-bar combo-search-bar-second-input"
+              id="location"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div
+            class="combo-search-bar combo-search-bar-button fas fa-search"
+          ></div>
+        </div>
+      </form>
+
       <div class="profiles">
         <div class="profile bg-white">
           <img
@@ -39,15 +65,29 @@
             class="round-img"
           />
           <div class="text-dark">
-            <h2>John Doe</h2>
-            <p>5.0 Worker (24) N/A Boss (0)</p>
+            <h2>John Adams</h2>
+            <p>
+              (24)
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star-half-o checked"></span>
+            </p>
             <p>New York, NY</p>
-            <p>I'm a happy person</p>
+            <p>5 years experience freelance developer</p>
           </div>
           <ul>
-            <li class="text-primary"><i class="fas fa-check"></i>HTML</li>
-            <li class="text-primary"><i class="fas fa-check"></i>CSS</li>
-            <li class="text-primary"><i class="fas fa-check"></i>JavaScript</li>
+            <li class="text-primary">
+              <i class="fas fa-check" style="color: green;"></i> HTML
+            </li>
+            <li class="text-primary">
+              <i class="fas fa-check" style="color: green"></i> CSS
+            </li>
+            <li class="text-primary">
+              <i class="fas fa-check" style="color: green"></i> JavaScript
+            </li>
+            <div class="btn btn-small btn-success">Send Job Offer</div>
+            <div class="btn btn-small btn-primary">View Full Profile</div>
           </ul>
         </div>
 
@@ -58,14 +98,30 @@
             class="round-img"
           />
           <div class="text-dark">
-            <h2>Robert Doe</h2>
-            <p>4.0 Worker (1) 4.9 Boss (244)</p>
+            <h2>Robert Smith</h2>
+            <p>
+              (5)
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star-half-o checked"></span>
+            </p>
             <p>New York, NY</p>
-            <p>I'm a good boss</p>
+            <p>Junior Web Developer</p>
           </div>
           <ul>
-            <li class="text-primary"><i class="fas fa-check"></i>Management</li>
-            <li class="text-primary"><i class="fas fa-check"></i>Leadership</li>
+            <li class="text-primary">
+              <i class="fas fa-check" style="color: green"></i> HTML
+            </li>
+            <li class="text-primary">
+              <i class="fas fa-check" style="color: green"></i> CSS
+            </li>
+            <li class="text-primary" style="padding-left: 0.1rem">
+              <i class="fas fa-times" style="color: red"></i> JavaScript
+            </li>
+            <div class="btn btn-small btn-success">Send Job Offer</div>
+            <div class="btn btn-small btn-primary">View Full Profile</div>
           </ul>
         </div>
       </div>
