@@ -74,6 +74,18 @@ img {
     justify-content: center;
     text-align: center;
   }
+  &-profiles {
+    background: url('../img/wooden-panel.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  &-picture {
+    width: 60%;
+  }
+  &-description {
+    width: 60%;
+  }
 }
 
 // Profiles page
