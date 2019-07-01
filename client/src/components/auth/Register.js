@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { set } from 'mongoose';
 
 const Register = () => {
@@ -13,14 +15,32 @@ const Register = () => {
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  const onSubmit = e => {
+
+  const onSubmit = async e => {
     e.preventDefault();
     if (password !== confpassword) {
       console.log('Mismatched password');
     } else {
-      console.log(formData);
+      // const newUser = {
+      //   name,
+      //   email,
+      //   password
+      // };
+      // try {
+      //   const config = {
+      //     headers: {
+      //       'Content-Type': 'application/json'
+      //     }
+      //   };
+      //   const body = JSON.stringify(newUser);
+      //   const res = await axios.post('/api/users', body, config);
+      //   console.log(res.data);
+      // } catch (err) {
+      //   console.error(err.response.data);
+      // }
     }
   };
+
   return (
     <Fragment>
       <h1 className='large text-primary'>Sign up</h1>
@@ -82,9 +102,9 @@ const Register = () => {
       </form>
       <div className='p my-1 text-white'>
         Already have an account?
-        <a href='login.html' className='btn btn-small btn-light'>
+        <Link to='/login' className='btn btn-small btn-light'>
           Login
-        </a>
+        </Link>
       </div>
     </Fragment>
   );

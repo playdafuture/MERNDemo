@@ -1,7 +1,62 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { set } from 'mongoose';
 
 const Login = () => {
-  return <div>Login</div>;
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const { email, password } = formData;
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    console.log('Login request submitted');
+  };
+
+  return (
+    <Fragment>
+      <h1 className='large text-primary'>Sign in</h1>
+      <p className='lead'>
+        <i className='fas fa-user'>Log in to your account</i>
+      </p>
+      <form className='form' onSubmit={e => onSubmit(e)}>
+        <div className='form-group'>
+          <input
+            type='email'
+            placeholder='Email Address'
+            name='email'
+            value={email}
+            onChange={e => onChange(e)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={password}
+            onChange={e => onChange(e)}
+            required
+          />
+          <small className='form-text'>6 or more characters</small>
+        </div>
+        <input type='submit' value='Login' className='btn btn-primary' />
+      </form>
+      <div className='p my-1 text-white'>
+        Don't have an account yet?
+        <Link to='/register' className='btn btn-small btn-light'>
+          Sign up
+        </Link>
+      </div>
+    </Fragment>
+  );
 };
 
 export default Login;
