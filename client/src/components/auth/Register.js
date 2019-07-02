@@ -16,8 +16,13 @@ const Register = ({ setAlert }) => {
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+<<<<<<< HEAD
 
   const onSubmit = async e => {
+=======
+  const onSubmit = e => {
+    //frontend validation for password match
+>>>>>>> HTMLProto
     e.preventDefault();
     if (password !== confpassword) {
       setAlert('Passwords do not match', 'danger');
