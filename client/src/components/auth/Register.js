@@ -1,9 +1,11 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setAlert } from '../../actions/alert';
 import axios from 'axios';
 import { set } from 'mongoose';
 
-const Register = () => {
+const Register = props => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,25 +21,9 @@ const Register = () => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== confpassword) {
-      console.log('Mismatched password');
+      props.setAlert('Passwords do not match', 'danger');
     } else {
-      // const newUser = {
-      //   name,
-      //   email,
-      //   password
-      // };
-      // try {
-      //   const config = {
-      //     headers: {
-      //       'Content-Type': 'application/json'
-      //     }
-      //   };
-      //   const body = JSON.stringify(newUser);
-      //   const res = await axios.post('/api/users', body, config);
-      //   console.log(res.data);
-      // } catch (err) {
-      //   console.error(err.response.data);
-      // }
+      props.setAlert('Success', 'success');
     }
   };
 
@@ -110,4 +96,7 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default connect(
+  null,
+  { setAlert }
+)(Register);
