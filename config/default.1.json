@@ -1,5 +1,0 @@
-{
-  "startServerCommand": "npm run server",
-  "mongoURI": "mongodb+srv://MongoDBAdmin:MERNDemo@merndemocluster-2pcko.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "somerandomstring"
-}
